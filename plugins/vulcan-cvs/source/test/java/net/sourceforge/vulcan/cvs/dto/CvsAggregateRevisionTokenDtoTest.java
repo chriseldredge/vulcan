@@ -40,6 +40,6 @@ public class CvsAggregateRevisionTokenDtoTest extends TestCase {
 		CvsAggregateRevisionTokenDto r = new CvsAggregateRevisionTokenDto("1234", "2006/10/22 05:24:52");
 		
 		assertEquals("2006/10/22 05:24:52", r.getLabel());
-		assertEquals(20061022052452l, r.getRevision().longValue());
+		assertEquals(20061022052452l, r.getRevisionNum().longValue());
 	}
 }

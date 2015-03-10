@@ -99,7 +99,7 @@ class BuildQuery extends MappingSqlQuery {
 			dto.setLastGoodBuildNumber(lastGoodBuildNumber);
 		}
 		
-		final Long revision = rs.getLong("revision");
+		final String revision = rs.getString("revision");
 		if (!rs.wasNull()) {
 			final RevisionTokenDto revisionTokenDto = new RevisionTokenDto(revision, rs.getString("revision_label"));
 			

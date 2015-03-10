@@ -87,7 +87,7 @@ public class CvsRepositoryAdaptor extends CvsSupport implements RepositoryAdapto
 			return true;
 		}
 		
-		return getLatestRevision(rev).getRevision() > rev.getRevision();
+		return getLatestRevision(rev).getRevisionNum() > rev.getRevisionNum();
 	}
 	
 	public void prepareRepository(BuildDetailCallback buildDetailCallback) throws RepositoryException, InterruptedException {

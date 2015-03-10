@@ -22,15 +22,21 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 
 
 public class RevisionTokenDto extends BaseDto {
-	protected Long revision;
+	protected String revision;
 	protected String label;
 	
 	public RevisionTokenDto() {
 	}
 	public RevisionTokenDto(Long revision) {
-		this(revision, revision.toString());
+		this(revision.toString(), revision.toString());
 	}
 	public RevisionTokenDto(Long revision, String label) {
+		this(revision.toString(), label);
+	}
+	public RevisionTokenDto(String revision) {
+		this(revision, revision.toString());
+	}
+	public RevisionTokenDto(String revision, String label) {
 		this.revision = revision;
 		this.label = label;
 	}
@@ -61,11 +67,19 @@ public class RevisionTokenDto extends BaseDto {
 		this.label = label;
 	}
 
-	public Long getRevision() {
+	public String getRevision() {
 		return revision;
+	}
+	
+	public Long getRevisionNum() {
+		return Long.parseLong(revision, 10);
 	}
 
 	public void setRevision(Long revision) {
+		setRevision(revision.toString());
+	}
+	
+	public void setRevision(String revision) {
 		this.revision = revision;
 	}
 }

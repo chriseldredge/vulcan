@@ -222,8 +222,8 @@ public class MercurialRepository implements RepositoryAdaptor {
 	}
 
 	public ChangeLogDto getChangeLog(RevisionTokenDto previousRevision,	RevisionTokenDto currentRevision, OutputStream diffOutputStream) throws RepositoryException, InterruptedException {
-		final String diffRange = Long.toString(previousRevision.getRevision()) + ":" + Long.toString(currentRevision.getRevision());
-		final String revisionRange = "::" + Long.toString(currentRevision.getRevision()) + " and not(::" + Long.toString(previousRevision.getRevision()) + ")";
+		final String diffRange = previousRevision.getRevision() + ":" + currentRevision.getRevision();
+		final String revisionRange = "::" + currentRevision.getRevision() + " and not(::" + previousRevision.getRevision() + ")";
 		
 		getDiff(diffRange, diffOutputStream);
 		

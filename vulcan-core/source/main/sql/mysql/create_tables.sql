@@ -31,7 +31,7 @@ create table builds (
 	start_date timestamp not null default 0,
 	completion_date timestamp not null default 0,
 	
-	revision bigint,
+	revision varchar(256),
 	revision_label varchar(32),
 	
 	-- if the build failed before getting a revision,

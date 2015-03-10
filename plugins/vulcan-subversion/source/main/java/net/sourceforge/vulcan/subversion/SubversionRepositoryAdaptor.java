@@ -193,7 +193,7 @@ public class SubversionRepositoryAdaptor extends SubversionSupport implements Re
 			return true;
 		}
 		
-		return getLatestRevision(rev).getRevision() > rev.getRevision();
+		return getLatestRevision(rev).getRevisionNum() > rev.getRevisionNum();
 	}
 	
 	public void prepareRepository(BuildDetailCallback buildDetailCallback) throws RepositoryException, InterruptedException {
@@ -240,13 +240,13 @@ public class SubversionRepositoryAdaptor extends SubversionSupport implements Re
 				// Need to check if the old revision exists on this path in case we're building
 				// from a different branch/tag.
 				try {
-					info = svnRepository.info(path, previousRevision.getRevision());
+					info = svnRepository.info(path, previousRevision.getRevisionNum());
 				} catch (SVNException e) {
 					throw new RepositoryException(e);
 				}
 				
 				if (info != null) {
-					revision = previousRevision.getRevision();	
+					revision = previousRevision.getRevisionNum();	
 				} else {
 					// Path doesn't exist at that revision.  Use most recent commit
 					// even though it didn't match our sparse working copy.
@@ -370,8 +370,8 @@ public class SubversionRepositoryAdaptor extends SubversionSupport implements Re
 	}
 	
 	public ChangeLogDto getChangeLog(RevisionTokenDto first, RevisionTokenDto last, OutputStream diffOutputStream) throws RepositoryException {
-		final SVNRevision r1 = SVNRevision.create(first.getRevision().longValue());
-		final SVNRevision r2 = SVNRevision.create(last.getRevision().longValue());
+		final SVNRevision r1 = SVNRevision.create(first.getRevisionNum().longValue());
+		final SVNRevision r2 = SVNRevision.create(last.getRevisionNum().longValue());
 		
 		if (changeSets == null) {
 			changeSets = fetchChangeSets(r1, r2);

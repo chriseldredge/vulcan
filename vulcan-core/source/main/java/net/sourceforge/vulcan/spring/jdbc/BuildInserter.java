@@ -43,42 +43,42 @@ class BuildInserter extends RecordInserter {
 				" ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
 				" (select id from users where username=?), ?, ?)");
 		
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.TIMESTAMP));
-		declareParameter(new SqlParameter(Types.TIMESTAMP));
-		declareParameter(new SqlParameter(Types.NUMERIC));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.BIGINT));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.NUMERIC));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.BOOLEAN));
-		declareParameter(new SqlParameter(Types.BOOLEAN));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.BOOLEAN));
-		declareParameter(new SqlParameter(Types.VARCHAR));
-		declareParameter(new SqlParameter(Types.TIMESTAMP));
-		declareParameter(new SqlParameter(Types.BOOLEAN));
+		declareParameter(new SqlParameter(Types.VARCHAR)); //project_id
+		declareParameter(new SqlParameter(Types.VARCHAR)); //uuid
+		declareParameter(new SqlParameter(Types.VARCHAR)); //status
+		declareParameter(new SqlParameter(Types.VARCHAR)); //message_key
+		declareParameter(new SqlParameter(Types.VARCHAR)); //message_arg_0
+		declareParameter(new SqlParameter(Types.VARCHAR)); //message_arg_1
+		declareParameter(new SqlParameter(Types.VARCHAR)); //message_arg_2
+		declareParameter(new SqlParameter(Types.VARCHAR)); //message_arg_3
+		declareParameter(new SqlParameter(Types.VARCHAR)); //build_reason_key
+		declareParameter(new SqlParameter(Types.VARCHAR)); //build_reason_arg_0
+		declareParameter(new SqlParameter(Types.VARCHAR)); //build_reason_arg_1
+		declareParameter(new SqlParameter(Types.VARCHAR)); //build_reason_arg_2
+		declareParameter(new SqlParameter(Types.VARCHAR)); //build_reason_arg_3
+		declareParameter(new SqlParameter(Types.TIMESTAMP)); //start_date
+		declareParameter(new SqlParameter(Types.TIMESTAMP)); //completion_date
+		declareParameter(new SqlParameter(Types.NUMERIC)); //build_number
+		declareParameter(new SqlParameter(Types.VARCHAR)); //update_type
+		declareParameter(new SqlParameter(Types.VARCHAR)); //work_dir
+		declareParameter(new SqlParameter(Types.VARCHAR)); //revision
+		declareParameter(new SqlParameter(Types.VARCHAR)); //revision_label
+		declareParameter(new SqlParameter(Types.NUMERIC)); //last_good_build_number
+		declareParameter(new SqlParameter(Types.VARCHAR)); //tag_name
+		declareParameter(new SqlParameter(Types.VARCHAR)); //repository_url
+		declareParameter(new SqlParameter(Types.BOOLEAN)); //status_changed
+		declareParameter(new SqlParameter(Types.BOOLEAN)); //scheduled_build
+		declareParameter(new SqlParameter(Types.VARCHAR)); //requested_by
+		declareParameter(new SqlParameter(Types.BOOLEAN)); //revision_unavailable
+		declareParameter(new SqlParameter(Types.VARCHAR)); //broken_by_user_id
+		declareParameter(new SqlParameter(Types.TIMESTAMP)); //claimed_date
+		declareParameter(new SqlParameter(Types.BOOLEAN)); //work_dir_vcs_clean
 		
 		compile();
 	}
 	
 	public int insert(ProjectStatusDto dto) {
-		Long revision = null;
+		String revision = null;
 		String revisionLabel = null;
 		Boolean revisionUnavailable = Boolean.TRUE;
 		

@@ -144,7 +144,7 @@ public class SubversionRepositoryAdaptorTest extends TestCase {
 		fakeMostRecentLogRevision = 101l;
 		r = new TestableSubversionRepositoryAdaptor();
 		
-		assertEquals(fakeMostRecentLogRevision, r.getLatestRevision(r1).getRevision().longValue());
+		assertEquals(fakeMostRecentLogRevision, r.getLatestRevision(r1).getRevisionNum().longValue());
 	}
 	
 	public void testGetLatestRevisionUsesLogRevisionPreviousRevisionNull() throws Exception {
@@ -155,7 +155,7 @@ public class SubversionRepositoryAdaptorTest extends TestCase {
 		fakeMostRecentLogRevision = 101l;
 		r = new TestableSubversionRepositoryAdaptor();
 		
-		assertEquals(fakeMostRecentLogRevision, r.getLatestRevision(null).getRevision().longValue());
+		assertEquals(fakeMostRecentLogRevision, r.getLatestRevision(null).getRevisionNum().longValue());
 	}
 	
 	public void testGetLatestRevisionFiltersSparseLogs() throws Exception {
@@ -182,12 +182,12 @@ public class SubversionRepositoryAdaptorTest extends TestCase {
 		
 		r = new TestableSubversionRepositoryAdaptor();
 		
-		assertEquals(125l, r.getLatestRevision(r1).getRevision().longValue());
+		assertEquals(125l, r.getLatestRevision(r1).getRevisionNum().longValue());
 	}
 	
 	public void testGetLatestRevisionFiltersSparseLogsNoneMatch() throws Exception {
 		fakeSVNDirEntries.put(-1l, new SVNDirEntry(fakeURL, fakeURL, "trunk", SVNNodeKind.DIR, 0, false, 100l, new Date(), "author"));
-		fakeSVNDirEntries.put(r1.getRevision(), new SVNDirEntry(fakeURL, fakeURL, "trunk", SVNNodeKind.DIR, 0, false, 100l, new Date(), "author"));
+		fakeSVNDirEntries.put(r1.getRevisionNum(), new SVNDirEntry(fakeURL, fakeURL, "trunk", SVNNodeKind.DIR, 0, false, 100l, new Date(), "author"));
 		
 		repoConfig.setCheckoutDepth(CheckoutDepth.Empty);
 		
@@ -225,7 +225,7 @@ public class SubversionRepositoryAdaptorTest extends TestCase {
 		
 		r = new TestableSubversionRepositoryAdaptor();
 		
-		assertEquals((Long)200l, r.getLatestRevision(r1).getRevision());
+		assertEquals((Long)200l, r.getLatestRevision(r1).getRevisionNum());
 	}
 	
 	public void testGetLatestRevisionSparseIgnoresException() throws Exception {
@@ -242,7 +242,7 @@ public class SubversionRepositoryAdaptorTest extends TestCase {
 		
 		r = new TestableSubversionRepositoryAdaptor();
 		
-		assertEquals(fakeMostRecentLogRevision, r.getLatestRevision(r1).getRevision().longValue());
+		assertEquals(fakeMostRecentLogRevision, r.getLatestRevision(r1).getRevisionNum().longValue());
 	}
 	
 	public void testNonFatalException() throws Exception {

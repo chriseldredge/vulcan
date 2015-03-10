@@ -30,7 +30,7 @@ public class SubversionRevisionTokenDto extends RevisionTokenDto {
 	
 	@Override
 	public void setRevision(Long revision) {
-		this.revision = revision;
+		setRevision(revision);
 		setLabel("r" + revision.toString());
 	}
 }

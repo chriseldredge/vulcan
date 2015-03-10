@@ -149,7 +149,7 @@ public class MercurialRepositoryTest extends EasyMockTestCase {
 		verify();
 		
 		assertNotNull("getLatestRevision", rev);
-		assertEquals(8, rev.getRevision().longValue());
+		assertEquals(8, rev.getRevisionNum().longValue());
 		assertEquals("8:9bd7475fd513", rev.getLabel());
 	}
 	
