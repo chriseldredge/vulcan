@@ -1,0 +1,1 @@
+Point your RSS Feed Reader to rss.jsp on your Vulcan server to see build summaries about the 20 most recent builds.  The summaries include a link to a page which provides more details about the build outcome.
